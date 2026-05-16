@@ -1,0 +1,217 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", monospace;
+  background: var(--creme);
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+:root {
+  --creme: #fffbf8;
+  --onyx: #121212;
+  --jasmine: #feda77;
+  --honey: #fab050;
+  --coral: #ec6d66;
+}
+
+/*LOADER */
+
+#loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--creme);
+  z-index: 100;
+  transition: opacity 0.6s ease;
+}
+
+#loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 2px;
+  background: var(--creme);
+  border-radius: 1px;
+  margin-bottom: 40px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--creme);
+  border-radius: 1px;
+  transition: width 0.1s linear;
+}
+
+/* GLITCH TEXT */
+
+.glitch-wrap {
+  text-align: center;
+  cursor: default;
+}
+
+.glitch-text {
+  font-size: clamp(40px, 9vw, 80px);
+  font-weight: 700;
+  color: var(--onyx);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  user-select: none;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* relancer l'anim au clic une fois "PORTFOLIO" affiché */
+.glitch-text.complete {
+  cursor: pointer;
+}
+
+.click-hint {
+  margin-top: 24px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #999;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.click-hint.show {
+  opacity: 1;
+}
+
+/* NAVBAR */
+.nav {
+  width: 100%;
+  display: flex;
+  box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.348);
+  row-gap: 0px;
+  position: fixed;
+  box-shadow: 1 5 5px #000000;
+  backdrop-filter: blur(15px);
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.309);
+  z-index: 5;
+  height: 100px;
+}
+
+.nav-logo {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  background: none;
+  border: none;
+  margin-right: 100px;
+}
+
+.nav-logo:hover {
+  background-image: linear-gradient(to right, var(--jasmine), var(--coral));
+  color: transparent;
+  background-clip: text;
+  transition: 0.8s ease-in-out;
+}
+
+.nav-links {
+  
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--dark-grey);
+  opacity: 0.45;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+/* RESPONSIVE  */
+
+@media (max-width: 600px) {
+  .glitch-text {
+    letter-spacing: 4px;
+  }
+
+  .nav {
+    padding: 16px 20px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+}
+
+/*Dossier de cartes */
+#dossier {
+  position: relative;
+  width: 290px;
+  height: 220px;
+  margin: 300px auto 0;
+}
+
+.card {
+  position: absolute;
+  width: 200px;
+  height: 130px;
+  border-radius: 14px;
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+
+.card:nth-child(4) { /*Contact*/
+  left: 66px;
+  top: 0;
+  z-index: 1;
+   filter: blur(0.8px);
+  opacity: 0.8;
+}
+.card:nth-child(3) {/*Art*/
+  left: 44px;
+  top: 19px;
+  z-index: 2;
+   filter: blur(0.8px);
+  opacity: 0.8;
+}
+.card:nth-child(2) {/*Projet*/
+  left: 22px;
+  top: 38px;
+  z-index: 3;
+   filter: blur(0.8px);
+  opacity: 0.8;
+}
+.card:nth-child(1) {/*About*/
+  left: 0;
+  top: 57px;
+  z-index: 4;
+  filter: blur(0.8px);
+  opacity: 0.8;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  filter: none;
+}
