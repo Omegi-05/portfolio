@@ -1,5 +1,6 @@
 const finalText = "PORTFOLIO";
 const chars = "012345678ABCDEFGHIJKLMNOPQRSTUVWXYZ9@#$%&*";
+/*le loaderrrs */
 
 const progressFill = document.getElementById("progressFill");
 const glitchText = document.getElementById("glitchText");
@@ -12,7 +13,7 @@ let iteration = 0;
 let intervalId;
 let animDone = false;
 
-/*LOADER PROGREESS */
+/*le loaderrrs */
 
 let progress = 0;
 
@@ -62,7 +63,7 @@ function startGlitch() {
   }, 50);
 }
 
-/* CLICK FOR ENTER*/
+/* CLICK*/
 
 document.getElementById("glitchWrap").addEventListener("click", () => {
   if (!animDone) return;
@@ -81,7 +82,7 @@ glitchText.addEventListener("click", (e) => {
   startGlitch();
 });
 
-/* HOVER SOUND */
+/* les sons */
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -101,7 +102,7 @@ function beep8bit(freq, duration = 0.12) {
   osc.stop(audioCtx.currentTime + duration);
 }
 
-// NOTE HERE // 
+// NOTE, merci reddit // 
 const notes = [100, 200, 300, 400];
 
 document.querySelectorAll("#dossier .card").forEach((card, i) => {

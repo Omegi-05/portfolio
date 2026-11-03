@@ -1,0 +1,178 @@
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="/about.js"></script>
+    <link rel="icon" type="image/png" href="./public/favicon.png" />
+  </head>
+
+  <header>
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">OMΞGI</a>
+      <div class="nav-links">
+        <a href="about.html">about</a>
+        <a href="projets.html">projets</a>
+        <a href="arts.html">arts</a>
+        <a href="contact.html">contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <body>
+    <!-- MY FIRST PORTFOLIO SECTION -->
+    <section id="propos">
+      <div class="about-me">
+        <h3 class="hello">Hello !</h3>
+        <p class="blabla1">
+          My name is Lola, I have 20 years old and student <br />
+           at GOBELINS Paris in DNMADE.
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="wrapper">
+        <div class="flair flair--1"></div>
+        <div class="flair flair--2"></div>
+        <div class="flair flair--3"></div>
+        <div class="flair flair--4"></div>
+        <div class="flair flair--5"></div>
+        <div class="flair flair--6"></div>
+        <div class="flair flair--7"></div>
+      </div>
+    </div>
+
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--creme);
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        cursor:
+          url("public/curspen2.svg") 24 24,
+          auto;
+      }
+
+      :root {
+        --creme: #fffbf8;
+        --onyx: #121212;
+        --jasmine: #feda77;
+        --honey: #fab050;
+        --coral: #ec6d66;
+      }
+
+      section {
+        display: flex;
+        margin-top: 100px;
+        margin-left: 100px;
+        margin-right: 100px;
+      }
+
+      @media screen and (max-width: 768px) {
+        section {
+          flex-direction: column;
+          align-items: center;
+          margin-top: 200px;
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+      }
+
+      .hello {
+        font-size: 7rem;
+        font-family: "Bebas Neue", sans-serif;
+        color: var(--onyx);
+      }
+
+      .hello:hover {
+        color: var(--jasmine);
+        transition: 0.5s;
+      }
+
+      .blabla1 {
+        font-size: 1.5rem;
+        font-family: "Bebas Neue", sans-serif;
+        color: var(--onyx);
+      }
+
+      /* Draggable photos */
+      .container {
+        background-image: url("public/tableau.png");
+        background-size: 80%;
+        background-repeat: no-repeat;
+        position: relative;
+        margin-top: 100px;
+        height: 85%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        overflow: hidden;
+        cursor:
+          url("public/curspen2.svg") 24 24,
+          auto;
+      }
+
+
+      .wrapper {
+        position: absolute;
+        inset: 0;
+      }
+
+      .flair {
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: grab;
+        width: 300px;
+        height: 300px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        will-change: transform;
+        cursor:
+          url("public/curspen2.svg") 24 24,
+          auto;
+      }
+
+      .flair:active {
+        cursor:
+          url("public/curspen.svg") 24 24,
+          auto;
+      }
+
+      /* mes photos */
+      .flair--1 {
+        background-image: url("public/photo1.png");
+      }
+      .flair--2 {
+        background-image: url("public/photo2.png");
+      }
+      .flair--3 {
+        background-image: url("public/photo3.png");
+      }
+      .flair--4 {
+        background-image: url("public/photo4.png");
+      }
+      .flair--5 {
+        background-image: url("public/photo5.png");
+      }
+      .flair--6 {
+        background-image: url("public/photo6.png");
+      }
+      .flair--7 {
+        background-image: url("public/photo7.png");
+      }
+
+      /* fin */
+    </style>
+  </body>
+</html>
