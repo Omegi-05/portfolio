@@ -1,3 +1,4 @@
+import Script from 'next/script'  // test pour fixer // 
 import { gsap } from "gsap";
 import { Draggable } from "gsap/Draggable";
 import { InertiaPlugin } from "gsap/InertiaPlugin";
