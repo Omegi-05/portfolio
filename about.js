@@ -1,4 +1,4 @@
-import { gsap } from "gsap";
+import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm";
 import { Draggable } from "gsap/Draggable";
 import { InertiaPlugin } from "gsap/InertiaPlugin";
 
@@ -80,6 +80,5 @@ gsap.ticker.add((time, deltaTime) => {
     item.draggable.update();
   });
 });
-
 
 // inspirations : https://library.jjangik.kr/#throw // 
