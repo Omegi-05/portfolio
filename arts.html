@@ -19,54 +19,181 @@
     </nav>
   </header>
 
-
   <body>
     <div class="transport-container">
-<div class="tgv"></div>
-   <div class="tram"></div>   
+      <div class="tgv"></div>
+      <div class="tram"></div>
     </div>
-      
 
-    <style >
+    <div class="flipbook">
+      <div class="hard">Welcome <small>to my little world</small></div>
+      <div class="hard"></div>
+
+      <div>
+        <img src="public/arts/__dessin1.png" alt="Image 1" />
+      </div>
+
+      <div>
+        <img src="public/arts/__dessin2.png" alt="Image 1" />
+      </div>
+
+      <div>
+        <img src="public/arts/__dessin3.png" alt="Image 1" />
+      </div>
+
+      <div>
+        <img src="public/arts/__dessin4.png" alt="Image 1" />
+      </div>
+      <div>
+        <img src="public/arts/__dessin5.png" alt="Image 1" />
+      </div>
+
+      <div>
+        <img src="public/arts/__dessin5.png" alt="Image 1" />
+      </div>
+
+      <div>
+        <img src="public/arts/__dessin6.png" alt="Image 1" />
+      </div>
+
+      <div>
+        <img src="public/arts/__dessin7.png" alt="Image 1" />
+      </div>
+
+      <div>
+        <img src="public/arts/__dessin8.png" alt="Image 1" />
+      </div>
+
+      <div>
+        <img src="public/arts/__dessin9.png" alt="Image 1" />
+      </div>
+
+      <div class="hard"></div>
+      <div class="hard">Thanks for visiting !</div>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script src="arts.js"></script>
+    <script>
+      $(".flipbook").turn();
+    </script>
+
+    <div class="transport-container">
+      <div class="tgv"></div>
+      <div class="tram"></div>
+    </div>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Courier New", sans-serif;
+      }
+
+      body {
+        overflow-x: hidden;
+        background: var(--creme);
+        display: grid;
+        width: 100%;
+        cursor:
+          url("public/curspen2.svg") 24 24,
+          auto;
+      }
+
+      .flipbook {
+        width: 800px;
+        height: 600px;
+        margin: 100px auto;
+      }
+
+      .flipbook .hard {
+        background-color: #333;
+        color: #ffffff;
+        font-size: 50px;
+        text-align: center;
+        line-height: 50px;
+        border: none;
+        height: 200px;
+        border-radius: 19px;
+      }
+
+      .flipbook .hard small {
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+      .flipbook .page {
+        background: rgb(44, 44, 44);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border: 5px solid rgba(0, 0, 0, 0.11);
+        border-radius: 19px;
+      }
+
+.page img{
+	width: 100%;
+  height: 100%;
+	object-fit: cover;
+  border-radius: 19px;
+  }
+
+      .flipbook .page small {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+
+      
       .transport-container {
         position: relative;
         margin-top: 100px;
         width: 100%;
         height: 200px;
         overflow: hidden;
-
       }
 
       .tgv {
         position: absolute;
         margin-top: 100px;
-        right: -1000px; 
+        right: -1000px;
         width: 1000px;
         height: 100px;
-        background-image: url('public/tgv_tgv.png'); 
+        background-image: url("public/tgv_tgv.png");
         background-size: cover;
-        animation: moveTGV 7s linear infinite; 
+        animation: moveTGV 7s linear infinite;
       }
 
       .tram {
         position: absolute;
-        left: -380px; 
+        left: -380px;
         width: 380px;
         height: 100px;
-        background-image: url('public/tram.png'); 
+        background-image: url("public/tram.png");
         background-size: cover;
-        animation: moveTram 15s linear infinite; 
+        animation: moveTram 15s linear infinite;
       }
 
       @keyframes moveTGV {
-        from { right: -1000px; }
-        to { right: 100%; }
+        from {
+          right: -1000px;
+        }
+        to {
+          right: 100%;
+        }
       }
 
       @keyframes moveTram {
-        from { left: -380px; }
-        to { left: 100%; }
+        from {
+          left: -380px;
+        }
+        to {
+          left: 100%;
+        }
       }
-
     </style>
   </body>
+</html>
