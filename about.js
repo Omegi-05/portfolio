@@ -1,34 +1,25 @@
-
-import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm";
-import { Draggable } from "gsap/Draggable";
-import { InertiaPlugin } from "gsap/InertiaPlugin";
-
 gsap.registerPlugin(Draggable, InertiaPlugin);
 
-const container = document.querySelector(".container");
-const flairs = gsap.utils.toArray(
-  ".flair--1, .flair--2, .flair--3, .flair--4, .flair--5, .flair--6, .flair--7",
-);
+const wrapper = document.querySelector(".wrapper");
+const flairs = gsap.utils.toArray(".flair");
 
 const bounce = 0.8;
 const friction = 0.99;
 
-// Un objet d'état par image //
 const items = flairs.map((el) => {
   const item = { el, vx: 0, vy: 0, isDragging: false };
 
-  // les position de départ aléatoire dans le conteneur //
-  gsap.set(el, {
-    x: gsap.utils.random(0, container.clientWidth - el.offsetWidth),
-    y: gsap.utils.random(0, container.clientHeight - el.offsetHeight),
-  });
+  InertiaPlugin.track(el, "x,y");
 
   item.draggable = Draggable.create(el, {
-    bounds: container,
+    bounds: wrapper,
     inertia: false,
     onPress() {
       item.isDragging = true;
       item.vx = item.vy = 0;
+    },
+    onRelease() {
+      item.isDragging = false;
     },
     onDragEnd() {
       item.isDragging = false;
@@ -40,8 +31,49 @@ const items = flairs.map((el) => {
   return item;
 });
 
+// Répartition en grille avec décalage aléatoire
+function scatter() {
+  const W = wrapper.clientWidth;
+  const H = wrapper.clientHeight;
+  const n = items.length;
+
+  // Nombre de colonnes/lignes adapté au format de l'écran
+  const cols = Math.ceil(Math.sqrt(n * (W / H)));
+  const rows = Math.ceil(n / cols);
+  const cellW = W / cols;
+  const cellH = H / rows;
+
+  // Mélange les cases pour que l'ordre des images soit aléatoire
+  const cells = gsap.utils.shuffle(
+    Array.from({ length: cols * rows }, (_, i) => i),
+  );
+
+  items.forEach((item, i) => {
+    const { el } = item;
+    const col = cells[i] % cols;
+    const row = Math.floor(cells[i] / cols);
+
+    // Position aléatoire à l'intérieur de sa case
+    const minX = col * cellW;
+    const minY = row * cellH;
+    const maxX = Math.max(minX, minX + cellW - el.offsetWidth);
+    const maxY = Math.max(minY, minY + cellH - el.offsetHeight);
+
+    gsap.set(el, {
+      x: gsap.utils.clamp(0, W - el.offsetWidth, gsap.utils.random(minX, maxX)),
+      y: gsap.utils.clamp(0, H - el.offsetHeight, gsap.utils.random(minY, maxY)),
+    });
+
+    item.vx = item.vy = 0;
+    item.draggable.update();
+  });
+}
+
+// Physique : rebonds + friction
 gsap.ticker.add((time, deltaTime) => {
   const dt = deltaTime / 1000;
+  const W = wrapper.clientWidth;
+  const H = wrapper.clientHeight;
 
   items.forEach((item) => {
     const { el } = item;
@@ -52,10 +84,9 @@ gsap.ticker.add((time, deltaTime) => {
     let x = gsap.getProperty(el, "x") + item.vx * dt;
     let y = gsap.getProperty(el, "y") + item.vy * dt;
 
-    const maxX = container.clientWidth - el.offsetWidth;
-    const maxY = container.clientHeight - el.offsetHeight;
+    const maxX = W - el.offsetWidth;
+    const maxY = H - el.offsetHeight;
 
-    // Rebond horizontal //
     if (x <= 0) {
       x = 0;
       item.vx = Math.abs(item.vx) * bounce;
@@ -64,7 +95,6 @@ gsap.ticker.add((time, deltaTime) => {
       item.vx = -Math.abs(item.vx) * bounce;
     }
 
-    // Rebond vertical //
     if (y <= 0) {
       y = 0;
       item.vy = Math.abs(item.vy) * bounce;
@@ -73,7 +103,6 @@ gsap.ticker.add((time, deltaTime) => {
       item.vy = -Math.abs(item.vy) * bounce;
     }
 
-    // Friction //
     item.vx *= friction;
     item.vy *= friction;
 
@@ -82,4 +111,15 @@ gsap.ticker.add((time, deltaTime) => {
   });
 });
 
-// inspirations : https://library.jjangik.kr/#throw // 
+// On attend que tout soit chargé pour avoir les bonnes tailles
+window.addEventListener("load", scatter);
+
+// Redistribue si la fenêtre change de taille
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    items.forEach((item) => item.draggable.applyBounds(wrapper));
+    scatter();
+  }, 150);
+});
