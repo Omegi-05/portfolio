@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-=======
-
-import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm";
-import { Draggable } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/Draggable/+esm";
-import { InertiaPlugin } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/InertiaPlugin/+esm";
-
->>>>>>> b096f0c01a7fd73f525720772046f8f7e9f01c64
 gsap.registerPlugin(Draggable, InertiaPlugin);
 
 const wrapper = document.querySelector(".wrapper");
