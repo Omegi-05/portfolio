@@ -25,53 +25,24 @@
       <div class="tram"></div>
     </div>
 
-    <div class="flipbook">
-      <div>
-        <img src="public/arts/__dessin1.png" alt="Image 1" />
+    <div class="canicooking">
+      <img class="corde" src="public/arts/__corde.png"/>
+      <div class="group">
+      <div class="sixseven"><img class="Image" src="public/arts/__dessin1.png" alt="Dessin 1"/></div>
+      <div class="sixseven"><img class="Image" src="public/arts/__dessin2.png" alt="Dessin 2"/></div>
+      <div class="sixseven"><img class="Image" src="public/arts/__dessin3.png" alt="Dessin 3"/></div>
+      <div class="sixseven"><img class="Image" src="public/arts/__dessin4.png" alt="Dessin 4"/></div>
+      <div class="sixseven"><img class="Image" src="public/arts/__dessin5.png" alt="Dessin 5"/></div>
+      <div class="sixseven"><img class="Image" src="public/arts/__dessin6.png" alt="Dessin 6"/></div>
+      <div class="sixseven"><img class="Image" src="public/arts/__dessin7.png" alt="Dessin 7"/></div>
+      <div class="sixseven"><img class="Image" src="public/arts/__dessin8.png" alt="Dessin 8"/></div>
+      <div class="sixseven"><img class="Image" src="public/arts/__dessin9.png" alt="Dessin 9"/></div>
       </div>
-
-      <div>
-        <img src="public/arts/__dessin2.png" alt="Image 1" />
-      </div>
-
-      <div>
-        <img src="public/arts/__dessin3.png" alt="Image 1" />
-      </div>
-
-      <div>
-        <img src="public/arts/__dessin4.png" alt="Image 1" />
-      </div>
-      <div>
-        <img src="public/arts/__dessin5.png" alt="Image 1" />
-      </div>
-
-      <div>
-        <img src="public/arts/__dessin5.png" alt="Image 1" />
-      </div>
-
-      <div>
-        <img src="public/arts/__dessin6.png" alt="Image 1" />
-      </div>
-
-      <div>
-        <img src="public/arts/__dessin7.png" alt="Image 1" />
-      </div>
-
-      <div>
-        <img src="public/arts/__dessin8.png" alt="Image 1" />
-      </div>
-
-      <div>
-        <img src="public/arts/__dessin9.png" alt="Image 1" />
-      </div>
-
-
-    <script src="arts.js"></script>
-
-    <div class="transport-container">
-      <div class="tgv"></div>
-      <div class="tram"></div>
     </div>
+
+
+      
+    <script src="arts.js"></script>
 
     <style>
       * {
@@ -91,7 +62,6 @@
           auto;
       }
 
-      
       .transport-container {
         position: relative;
         margin-top: 100px;
@@ -138,6 +108,83 @@
           left: 100%;
         }
       }
+
+       .corde {
+        width: 100px;
+        height: 100px;
+        background-size: cover;
+      }
+
+ .canicooking {
+    padding: 20px 0;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    margin-top: 20px;
+  }
+
+  .sixseven:hover {
+  transform: translateY(-3px);
+  transition: all ease-in-out 0.3s;
+  transform: scale(1.20);
+  }
+
+  .sixseven {
+    width:100%;
+    color: white;
+    border-radius: 24px;
+    padding: 20px;
+    font-size: xx-large;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+
+    .Image {
+      max-width: 200px;
+    }
+  }
+
+    .canicooking {
+    > * {
+      flex: 0 0 100%;
+    }
+  }
+
+  .group {
+    display: flex;
+    gap: 20px;
+    padding-right: 20px;
+    height: 330px;
+  }
+
+  .group {
+    will-change: transform; 
+    animation: droite 60s linear infinite;
+  }
+
+  @keyframes droite {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+
+    } 
+  }
+
+    .canicooking {
+    /* ... */
+    &:hover .group {
+      animation-play-state: paused;
+    }
+
+  }
+
+  
+
+
+
+
     </style>
   </body>
 </html>
