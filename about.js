@@ -31,19 +31,19 @@ const items = flairs.map((el) => {
   return item;
 });
 
-// Répartition en grille avec décalage aléatoire
+// aléatoire // 
 function scatter() {
   const W = wrapper.clientWidth;
   const H = wrapper.clientHeight;
   const n = items.length;
 
-  // Nombre de colonnes/lignes adapté au format de l'écran
+  // Nombre de colonnes // 
   const cols = Math.ceil(Math.sqrt(n * (W / H)));
   const rows = Math.ceil(n / cols);
   const cellW = W / cols;
   const cellH = H / rows;
 
-  // Mélange les cases pour que l'ordre des images soit aléatoire
+  // aleatoire v2 // 
   const cells = gsap.utils.shuffle(
     Array.from({ length: cols * rows }, (_, i) => i),
   );
@@ -53,7 +53,7 @@ function scatter() {
     const col = cells[i] % cols;
     const row = Math.floor(cells[i] / cols);
 
-    // Position aléatoire à l'intérieur de sa case
+    // les position aléatoire à l'intérieur de sa case //
     const minX = col * cellW;
     const minY = row * cellH;
     const maxX = Math.max(minX, minX + cellW - el.offsetWidth);
@@ -69,7 +69,7 @@ function scatter() {
   });
 }
 
-// Physique : rebonds + friction
+// rebonds.. // 
 gsap.ticker.add((time, deltaTime) => {
   const dt = deltaTime / 1000;
   const W = wrapper.clientWidth;
@@ -111,10 +111,10 @@ gsap.ticker.add((time, deltaTime) => {
   });
 });
 
-// On attend que tout soit chargé pour avoir les bonnes tailles
+// loadsss // 
 window.addEventListener("load", scatter);
 
-// Redistribue si la fenêtre change de taille
+// resize timer // 
 let resizeTimer;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
