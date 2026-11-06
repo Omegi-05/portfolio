@@ -1,5 +1,7 @@
 gsap.registerPlugin(Draggable, InertiaPlugin);
 
+/* bro marche stp */
+
 const wrapper = document.querySelector(".wrapper");
 const flairs = gsap.utils.toArray(".flair");
 
